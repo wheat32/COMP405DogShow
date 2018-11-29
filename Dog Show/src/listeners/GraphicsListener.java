@@ -1,8 +1,8 @@
 package listeners;
 
-import java.awt.Graphics2D;
+import javax.swing.JFrame;
 
 public interface GraphicsListener
 {
-	void graphicsCall(Graphics2D gfx);
+	void graphicsCall(JFrame jFrame);
 }

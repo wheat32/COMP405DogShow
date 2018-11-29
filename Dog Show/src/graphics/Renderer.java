@@ -2,20 +2,19 @@ package graphics;
 
 import java.awt.Canvas;
 import java.awt.Dimension;
-import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
 import listeners.GraphicsListener;
 
-public class Renderer extends JFrame
+public final class Renderer extends JFrame
 {
 	private static final long serialVersionUID = 1L;
 	
-	Canvas canvas;
+	private Canvas canvas;
 	
-	ArrayList<GraphicsListener> graphicsListeners = new ArrayList<>();
+	private ArrayList<GraphicsListener> graphicsListeners = new ArrayList<>();
 	
 	public Renderer()
 	{
@@ -62,11 +61,11 @@ public class Renderer extends JFrame
 		}
 	}
 	
-	public void makeGraphicsCalls(Graphics2D gfx)
+	public void makeGraphicsCalls()
 	{
 		for(GraphicsListener listener : graphicsListeners)
 		{
-			listener.graphicsCall(gfx);
+			listener.graphicsCall(this);
 		}
 	}
 }
