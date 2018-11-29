@@ -1,12 +1,11 @@
 package core;
 
+import graphics.Renderer;
+
 public class Main
 {
-
 	public static void main(String[] args)
 	{
-		// TODO Auto-generated method stub
-
+		Renderer gfxControl = new Renderer();
 	}
-
 }
