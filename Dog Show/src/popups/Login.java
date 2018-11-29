@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -38,6 +39,7 @@ public class Login implements GraphicsListener
 	@Override
 	public void graphicsCall(JFrame jFrame)
 	{
+		JDialog dialog = new JDialog(jFrame, "Login", true);
 		JPanel panel = new JPanel(new GridBagLayout());
 		GridBagConstraints cs = new GridBagConstraints();
 
@@ -83,7 +85,8 @@ public class Login implements GraphicsListener
         {
             public void actionPerformed(ActionEvent e) 
             {
-                //dispose();
+            	dialog.dispose();
+            	jFrame.dispose();
             }
         });
         
@@ -91,10 +94,14 @@ public class Login implements GraphicsListener
         bp.add(btnLogin);
         bp.add(btnCancel);
         
-        jFrame.add(panel, BorderLayout.CENTER);
-        jFrame.add(bp, BorderLayout.PAGE_END);
+        dialog.add(panel, BorderLayout.CENTER);
+        dialog.add(bp, BorderLayout.PAGE_END);
         
-        panel.setVisible(true);
-        bp.setVisible(true);
+        dialog.pack();
+        dialog.setResizable(false);
+        
+        dialog.setLocationRelativeTo(jFrame);
+        dialog.setLocation(jFrame.getWidth()/2, jFrame.getHeight()/2);
+        dialog.setVisible(true);
 	}
 }
