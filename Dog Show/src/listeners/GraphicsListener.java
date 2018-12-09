@@ -1,8 +1,8 @@
 package listeners;
 
-import javax.swing.JFrame;
+import graphics.Renderer;
 
 public interface GraphicsListener
 {
-	void graphicsCall(JFrame jFrame);
+	void graphicsCall(Renderer renderer);
 }

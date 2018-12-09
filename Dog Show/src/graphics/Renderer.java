@@ -2,7 +2,6 @@ package graphics;
 
 import java.awt.Canvas;
 import java.awt.Dimension;
-import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -14,15 +13,13 @@ public final class Renderer extends JFrame
 	
 	private Canvas canvas;
 	
-	private ArrayList<GraphicsListener> graphicsListeners = new ArrayList<>();
-	
 	public Renderer()
 	{
 		//Initial JFrame setup
 		super("Dog Show Admin Tool");
 		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		super.setIgnoreRepaint(false);
-		super.setMinimumSize(new Dimension(640, 480));
+		super.setIgnoreRepaint(true);
+		super.setResizable(false);
 		
 		//Initial Canvas setup
 		canvas = new Canvas();
@@ -34,38 +31,14 @@ public final class Renderer extends JFrame
 		canvas.createBufferStrategy(2);
 		super.setVisible(true);
 	}
-
-	public void addGraphicsListener(GraphicsListener listener)
+	
+	public void makeGraphicsCalls(GraphicsListener listener)
 	{
-		if(graphicsListeners.contains(listener) == false)
-		{
-			graphicsListeners.add(listener);
-			System.out.println("Added listener " + listener.toString() + " to graphic call list.");
-		}
-		else
-		{
-			System.err.println("Listener " + listener.toString() + " already exists in the graphics call list.");
-		}
+		listener.graphicsCall(this);
 	}
 	
-	public void removeGraphicsListener(GraphicsListener listener)
+	public Canvas getCanvas()
 	{
-		if(graphicsListeners.contains(listener) == true)
-		{
-			graphicsListeners.remove(listener);
-			System.out.println("Listener " + listener.toString() + " was removed from graphics call list.");
-		}
-		else
-		{
-			System.err.println("Listener " + listener.toString() + " does not exists in the graphics call list.");
-		}
-	}
-	
-	public void makeGraphicsCalls()
-	{
-		for(GraphicsListener listener : graphicsListeners)
-		{
-			listener.graphicsCall(this);
-		}
+		return canvas;
 	}
 }
