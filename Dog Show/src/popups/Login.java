@@ -7,6 +7,7 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -18,16 +19,15 @@ import javax.swing.border.LineBorder;
 
 import core.Status;
 import graphics.Renderer;
-import listeners.GraphicsListener;
 
-public class Login implements GraphicsListener
+public class Login
 {
-	private transient final String adminEmail = "admin";
-	private transient final String adminPassword = "password";
+	//private transient final String adminEmail = "admin";
+	//private transient final String adminPassword = "password";
 	
 	public Login(Renderer renderer)
 	{
-		renderer.makeGraphicsCalls(this);
+		graphicsCall(renderer);
 	}
 
 	@Override
@@ -36,7 +36,6 @@ public class Login implements GraphicsListener
 		return "login prompt";
 	}
 
-	@Override
 	public void graphicsCall(Renderer renderer)
 	{
 		JDialog dialog = new JDialog(renderer, "Login", true);
@@ -77,7 +76,7 @@ public class Login implements GraphicsListener
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				if(tfEmail.getText().equals(adminEmail) && String.valueOf(pfPassword.getPassword()).equals(adminPassword))
+				if(isUser(tfEmail.getText(), String.valueOf(pfPassword.getPassword())) == true)
 				{
 					dialog.dispose();
 					Status.loggedIn = true;
@@ -93,6 +92,7 @@ public class Login implements GraphicsListener
         {
             public void actionPerformed(ActionEvent e) 
             {
+            	renderer.getCurrMenu().stopTimer();
             	dialog.dispose();
             	renderer.dispose();
             }
@@ -111,5 +111,19 @@ public class Login implements GraphicsListener
         dialog.setLocationRelativeTo(renderer);
         dialog.setLocation(renderer.getWidth()/2, renderer.getHeight()/2);
         dialog.setVisible(true);
+	}
+	
+	private boolean isUser(String username, String password)
+	{
+		connectToDB();
+		//TODO get the connection
+		return true;//TODO for now, just return true
+	}
+	
+	private Connection connectToDB()
+	{
+		//TODO implement getting database connection
+		Connection connection = null;
+		return connection;
 	}
 }

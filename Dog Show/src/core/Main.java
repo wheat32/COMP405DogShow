@@ -8,6 +8,6 @@ public class Main
 	public static void main(String[] args)
 	{
 		Renderer gfxControl = new Renderer();
-		MainMenu mainMenu = new MainMenu(gfxControl);
+		gfxControl.setMenu(new MainMenu(gfxControl));
 	}
 }
