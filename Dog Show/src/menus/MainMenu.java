@@ -1,13 +1,11 @@
 package menus;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeListener;
 
-import javax.swing.Action;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 import core.Status;
 import graphics.Renderer;
@@ -46,6 +44,13 @@ public class MainMenu extends Menu
 	@Override
 	protected void addButtons()
 	{
+		JLabel mainMenuLabel = new JLabel("MainMenuLabel");
+		mainMenuLabel.setBounds(renderer.getWidth()/2-buttonWidth/2, renderer.getHeight()/8*2-buttonHeight/2, buttonWidth, buttonHeight);
+		mainMenuLabel.setFont(new Font("Helvetica", Font.BOLD, 32));
+		mainMenuLabel.setText("Main Menu");
+		mainMenuLabel.setOpaque(false);
+		renderer.addComponent(mainMenuLabel);
+		
 		JButton registerBtn = new JButton("Register");
 		registerBtn.setBounds(renderer.getWidth()/2-buttonWidth/2, renderer.getHeight()/8*4-buttonHeight/2, buttonWidth, buttonHeight);
 		registerBtn.setFont(new Font("Helvetica", Font.BOLD, 32));
@@ -73,6 +78,7 @@ public class MainMenu extends Menu
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
+				stopTimer();
 				renderer.dispose();
 			}
 		});
