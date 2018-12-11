@@ -3,6 +3,7 @@ package graphics;
 import java.awt.Canvas;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -20,7 +21,7 @@ public final class Renderer extends JFrame implements Cloneable
 		//Initial JFrame setup
 		super("Dog Show Admin Tool");
 		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		super.setIgnoreRepaint(false);
+		super.setIgnoreRepaint(true);
 		super.setResizable(false);
 		
 		//Initial Canvas setup
@@ -34,20 +35,34 @@ public final class Renderer extends JFrame implements Cloneable
 		super.setVisible(true);
 	}
 	
-	public void addComponent(Component component)
+	public void addComponents(ArrayList<Component> components)
 	{
-		super.add(component);
+		for(Component component : components)
+		{
+			super.add(component);
+			component.repaint();
+		}
 		
 		super.add(canvas);
 		super.pack();
-		super.setVisible(true);
+		canvas.createBufferStrategy(2);
 		super.revalidate();
 		super.repaint();
 	}
 	
 	public void setMenu(Menu menu)
 	{
+		if(currMenu != null)
+		{
+			for(Component component : currMenu.getComponents())
+			{
+				super.remove(component);
+			}
+		}
+		
 		currMenu = menu;
+		super.revalidate();
+		super.repaint();
 	}
 	
 	public Menu getCurrMenu()

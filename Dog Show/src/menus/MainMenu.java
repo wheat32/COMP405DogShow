@@ -23,8 +23,8 @@ public class MainMenu extends Menu
 		super(renderer, "images/dogDoingWorkOnControlSticksWhichAreRedAndRound.jpg");
 		
 		checkStatus();
-		addButtons();
-		super.startTimer(50);
+		addComponents();
+		super.startTimer(100);
 	}
 	
 	private void checkStatus()
@@ -44,57 +44,48 @@ public class MainMenu extends Menu
 	}
 	
 	@Override
-	protected void addButtons()
+	protected void addComponents()
 	{
 		JLabel mainMenuLabel = new JLabel("MainMenuLabel", SwingConstants.CENTER);
 		mainMenuLabel.setBounds(renderer.getWidth()/2-buttonWidth/2, renderer.getHeight()/8*2-buttonHeight/2, buttonWidth, buttonHeight);
-		
 		mainMenuLabel.setFont(new Font("Helvetica", Font.BOLD, 32));
 		mainMenuLabel.setText("Main Menu");
-		
-		//mainMenuLabel.setForeground(registerBtn.getForeground());  doesn't seem to work, even when put under register intilization
-		mainMenuLabel.setOpaque(false);
-		renderer.addComponent(mainMenuLabel);
+		components.add(mainMenuLabel);
 		
 		JButton registerBtn = new JButton("Register");
 		registerBtn.setBounds(renderer.getWidth()/2-buttonWidth/2, renderer.getHeight()/8*4-buttonHeight/2, buttonWidth, buttonHeight);
 		registerBtn.setFont(new Font("Helvetica", Font.BOLD, 32));
 		registerBtn.setText("Register");
-		
 		registerBtn.addActionListener(new ActionListener()
-		{
-			
+		{	
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				//call register page
-				
+				stopTimer();
+				renderer.setMenu(new RegisterPage(renderer, "images/cutie.jpeg"));
 			}
 		});
-		
-		renderer.addComponent(registerBtn);
+		components.add(registerBtn);
 		
 		JButton scoringBtn = new JButton("Scoring");
 		scoringBtn.setBounds(renderer.getWidth()/2-buttonWidth/2, renderer.getHeight()/8*5-buttonHeight/2, buttonWidth, buttonHeight);
 		scoringBtn.setFont(new Font("Helvetica", Font.BOLD, 32));
 		scoringBtn.setText("Scoring");
 		scoringBtn.addActionListener(new ActionListener()
-		{
-			
+		{	
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
 				// TODO scoring btn
-				
 			}
 		});
-		renderer.addComponent(scoringBtn);
+		components.add(scoringBtn);
 		
 		JButton reviewScoresBtn = new JButton("ReviewScores");
 		reviewScoresBtn.setBounds(renderer.getWidth()/2-buttonWidth/2, renderer.getHeight()/8*6-buttonHeight/2, buttonWidth, buttonHeight);
 		reviewScoresBtn.setFont(new Font("Helvetica", Font.BOLD, 32));
 		reviewScoresBtn.setText("Review Scores");
-		renderer.addComponent(reviewScoresBtn);
+		components.add(reviewScoresBtn);
 		
 		JButton quitBtn = new JButton("QuitBtn");
 		quitBtn.setBounds(renderer.getWidth()/2-buttonWidth/2, renderer.getHeight()/8*7-buttonHeight/2, buttonWidth, buttonHeight);
@@ -109,6 +100,8 @@ public class MainMenu extends Menu
 				renderer.dispose();
 			}
 		});
-		renderer.addComponent(quitBtn);
+		components.add(quitBtn);
+		
+		renderer.addComponents(components);
 	}
 }

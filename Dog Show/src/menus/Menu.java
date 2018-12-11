@@ -1,10 +1,14 @@
 package menus;
 
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferStrategy;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -17,6 +21,7 @@ public abstract class Menu
 	protected final Renderer renderer;
 	private Image background;
 	private Timer timer = new Timer();
+	protected ArrayList<Component> components = new ArrayList<>();
 	
 	public Menu(Renderer renderer, String addr)
 	{
@@ -44,7 +49,7 @@ public abstract class Menu
 			@Override
 			public void run()
 			{
-				graphicsCall(renderer);
+				graphicsCall();
 			}
 		}, 0, delay);
 	}
@@ -54,11 +59,13 @@ public abstract class Menu
 		timer.cancel();
 	}
 	
-	public void graphicsCall(Renderer renderer)
+	public void graphicsCall()
 	{
 		BufferStrategy strategy = renderer.getCanvas().getBufferStrategy();
 		Graphics gfx = strategy.getDrawGraphics();
 
+		gfx.setColor(Color.BLACK);
+		gfx.setFont(new Font("Helvetica", Font.BOLD, 32));
 		gfx.clearRect(0, 0, renderer.getWidth(), renderer.getHeight());
 		gfx.drawImage(background, 0, 0, renderer.getCanvas().getWidth(), renderer.getCanvas().getHeight(), 
 				0, 0, background.getWidth(null), background.getHeight(null), null);
@@ -67,5 +74,10 @@ public abstract class Menu
 		gfx.dispose();
 	}
 	
-	protected abstract void addButtons();
+	protected abstract void addComponents();
+	
+	public ArrayList<Component> getComponents()
+	{
+		return components;
+	}
 }

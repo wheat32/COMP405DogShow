@@ -9,5 +9,6 @@ public class Main
 	{
 		Renderer gfxControl = new Renderer();
 		gfxControl.setMenu(new MainMenu(gfxControl));
+		//TODO dogs should vote
 	}
 }

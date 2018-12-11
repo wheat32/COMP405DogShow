@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -22,26 +21,25 @@ public class RegisterPage extends Menu
 
 	public RegisterPage(Renderer renderer, String addr) 
 	{
+		super(renderer, addr);
 		
-		
-		super(renderer, "cutie.jpg");
-		
-		addButtons();
-		super.startTimer(50);
-		
+		addComponents();
+		super.startTimer(100);
 	}
 
 	@Override
-	protected void addButtons() //TODO add a dog pictures upload method? 
+	protected void addComponents() //TODO add a dog pictures upload method? 
 	{
 		JLabel registerPageLabel = new JLabel("RegisterPageLabel", SwingConstants.CENTER);
 		registerPageLabel.setBounds(renderer.getWidth()/2-buttonWidth/2, renderer.getHeight()/8*2-buttonHeight/2, buttonWidth, buttonHeight);
 		registerPageLabel.setFont(new Font("Helvetica", Font.BOLD, 32));
 		registerPageLabel.setText("Register Page");
 		registerPageLabel.setOpaque(false);
-		renderer.addComponent(registerPageLabel);
-		JDialog dname = new JDialog(renderer, "Dog Details", true);  //need a way to input fields, using jdialog?
+		components.add(registerPageLabel);
+		
+		//JDialog dname = new JDialog(renderer, "Dog Details", true);  //need a way to input fields, using jdialog?
 		JPanel fieldPanel = new JPanel(new GridBagLayout());
+		fieldPanel.setBounds(0, 0, 400, 400);
 		GridBagConstraints cs  = new GridBagConstraints();
 		
 		cs.fill = GridBagConstraints.HORIZONTAL;
@@ -117,15 +115,6 @@ public class RegisterPage extends Menu
 		cs.gridy = 0;
 		cs.gridwidth = 2;
 		fieldPanel.add(tfDogBreed, cs);
-
-
-
-
-
-
-		
-		
-		
 		
 		JButton quitBtn = new JButton("QuitBtn"); //TODO maybe set this to go back to main menu 
 		quitBtn.setBounds(renderer.getWidth()/2-buttonWidth/2, renderer.getHeight()/8*7-buttonHeight/2, buttonWidth, buttonHeight);
@@ -140,9 +129,11 @@ public class RegisterPage extends Menu
 				renderer.dispose();
 			}
 		});
-		renderer.addComponent(quitBtn);
-	
-
+		components.add(quitBtn);
+		fieldPanel.setVisible(true);
+		components.add(fieldPanel);
+		
+		renderer.addComponents(components);
 	}
 
 }
