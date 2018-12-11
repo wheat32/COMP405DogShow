@@ -92,7 +92,6 @@ public class Login
         {
             public void actionPerformed(ActionEvent e) 
             {
-            	renderer.getCurrMenu().stopTimer();
             	dialog.dispose();
             	renderer.dispose();
             }
