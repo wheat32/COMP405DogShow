@@ -20,11 +20,10 @@ public class MainMenu extends Menu
 	
 	public MainMenu(Renderer renderer)
 	{
-		super(renderer, "images/dogDoingWorkOnControlSticksWhichAreRedAndRound.jpg");
-		
+		super(renderer);
+		renderer.setBackground("src/images/dogDoingWorkOnControlSticksWhichAreRedAndRound.jpg");
 		checkStatus();
 		addComponents();
-		super.startTimer(100);
 	}
 	
 	private void checkStatus()
@@ -47,9 +46,10 @@ public class MainMenu extends Menu
 	protected void addComponents()
 	{
 		JLabel mainMenuLabel = new JLabel("MainMenuLabel", SwingConstants.CENTER);
-		mainMenuLabel.setBounds(renderer.getWidth()/2-buttonWidth/2, renderer.getHeight()/8*2-buttonHeight/2, buttonWidth, buttonHeight);
-		mainMenuLabel.setFont(new Font("Helvetica", Font.BOLD, 32));
+		mainMenuLabel.setBounds(0, renderer.getHeight()/8*2-buttonHeight/2, renderer.getWidth(), buttonHeight);
+		mainMenuLabel.setFont(new Font("Helvetica", Font.BOLD, 64));
 		mainMenuLabel.setText("Main Menu");
+		mainMenuLabel.setForeground(Color.WHITE);
 		components.add(mainMenuLabel);
 		
 		JButton registerBtn = new JButton("Register");
@@ -61,8 +61,7 @@ public class MainMenu extends Menu
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				stopTimer();
-				renderer.setMenu(new RegisterPage(renderer, "images/cutie.jpeg"));
+				renderer.setMenu(new RegisterPage(renderer));
 			}
 		});
 		components.add(registerBtn);
@@ -96,7 +95,6 @@ public class MainMenu extends Menu
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				stopTimer();
 				renderer.dispose();
 			}
 		});

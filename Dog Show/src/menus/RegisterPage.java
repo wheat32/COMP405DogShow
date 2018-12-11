@@ -19,12 +19,11 @@ public class RegisterPage extends Menu
 	private int buttonWidth = 300;
 	private int buttonHeight = 80;
 
-	public RegisterPage(Renderer renderer, String addr) 
+	public RegisterPage(Renderer renderer) 
 	{
-		super(renderer, addr);
-		
+		super(renderer);
+		renderer.setBackground("src/images/cutie.jpeg");
 		addComponents();
-		super.startTimer(100);
 	}
 
 	@Override
@@ -125,7 +124,6 @@ public class RegisterPage extends Menu
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				stopTimer();
 				renderer.dispose();
 			}
 		});
