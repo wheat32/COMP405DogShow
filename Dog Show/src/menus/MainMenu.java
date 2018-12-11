@@ -76,7 +76,9 @@ public class MainMenu extends Menu
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				// TODO scoring btn
+				stopTimer();
+				renderer.setMenu(new ScoringPage(renderer, "images/cutie.jpeg"));
+				
 			}
 		});
 		components.add(scoringBtn);
