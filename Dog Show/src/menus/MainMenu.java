@@ -1,11 +1,13 @@
 package menus;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 import core.Status;
 import graphics.Renderer;
@@ -44,10 +46,13 @@ public class MainMenu extends Menu
 	@Override
 	protected void addButtons()
 	{
-		JLabel mainMenuLabel = new JLabel("MainMenuLabel");
+		JLabel mainMenuLabel = new JLabel("MainMenuLabel", SwingConstants.CENTER);
 		mainMenuLabel.setBounds(renderer.getWidth()/2-buttonWidth/2, renderer.getHeight()/8*2-buttonHeight/2, buttonWidth, buttonHeight);
+		
 		mainMenuLabel.setFont(new Font("Helvetica", Font.BOLD, 32));
 		mainMenuLabel.setText("Main Menu");
+		
+		//mainMenuLabel.setForeground(registerBtn.getForeground());  doesn't seem to work, even when put under register intilization
 		mainMenuLabel.setOpaque(false);
 		renderer.addComponent(mainMenuLabel);
 		
@@ -55,12 +60,34 @@ public class MainMenu extends Menu
 		registerBtn.setBounds(renderer.getWidth()/2-buttonWidth/2, renderer.getHeight()/8*4-buttonHeight/2, buttonWidth, buttonHeight);
 		registerBtn.setFont(new Font("Helvetica", Font.BOLD, 32));
 		registerBtn.setText("Register");
+		
+		registerBtn.addActionListener(new ActionListener()
+		{
+			
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				//call register page
+				
+			}
+		});
+		
 		renderer.addComponent(registerBtn);
 		
 		JButton scoringBtn = new JButton("Scoring");
 		scoringBtn.setBounds(renderer.getWidth()/2-buttonWidth/2, renderer.getHeight()/8*5-buttonHeight/2, buttonWidth, buttonHeight);
 		scoringBtn.setFont(new Font("Helvetica", Font.BOLD, 32));
 		scoringBtn.setText("Scoring");
+		scoringBtn.addActionListener(new ActionListener()
+		{
+			
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				// TODO scoring btn
+				
+			}
+		});
 		renderer.addComponent(scoringBtn);
 		
 		JButton reviewScoresBtn = new JButton("ReviewScores");
