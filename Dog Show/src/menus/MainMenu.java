@@ -75,8 +75,7 @@ public class MainMenu extends Menu
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				stopTimer();
-				renderer.setMenu(new ScoringPage(renderer, "images/cutie.jpeg"));
+				renderer.setMenu(new ScoringPage(renderer));
 				
 			}
 		});

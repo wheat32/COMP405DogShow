@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.ProcessBuilder.Redirect;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -19,12 +18,11 @@ public class ScoringPage extends Menu
 	private int buttonHeight = 80;
 	
 
-	public ScoringPage(Renderer renderer, String addr) 
+	public ScoringPage(Renderer renderer) 
 	{
-		super(renderer, addr);
+		super(renderer);
 		
 		addComponents();
-		super.startTimer(100);
 	}
 
 	@Override
@@ -68,7 +66,6 @@ public class ScoringPage extends Menu
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				stopTimer();
 				renderer.dispose();
 			}
 		});
