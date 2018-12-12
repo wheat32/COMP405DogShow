@@ -17,6 +17,8 @@ import graphics.Renderer;
 
 public class RegisterPage extends Menu
 {
+	private int panelWidth = 360;
+	private int panelHeight;//TODO
 	private int buttonWidth = 300;
 	private int buttonHeight = 80;
 
@@ -121,16 +123,16 @@ public class RegisterPage extends Menu
 		cs.gridwidth = 2;
 		fieldPanel.add(tfDogBreed, cs);
 		
-		JButton quitBtn = new JButton("QuitBtn"); //TODO maybe set this to go back to main menu 
+		JButton quitBtn = new JButton("MainMenuBtn"); //TODO maybe set this to go back to main menu 
 		quitBtn.setBounds(renderer.getWidth()/2-buttonWidth/2, renderer.getHeight()/8*7-buttonHeight/2, buttonWidth, buttonHeight);
 		quitBtn.setFont(new Font("Helvetica", Font.BOLD, 32));
-		quitBtn.setText("Quit");
+		quitBtn.setText("Main Menu");
 		quitBtn.addActionListener(new ActionListener()
 		{
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				renderer.dispose();
+				renderer.setMenu(new MainMenu(renderer));
 			}
 		});
 		components.add(quitBtn);

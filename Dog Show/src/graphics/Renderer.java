@@ -46,7 +46,6 @@ public final class Renderer extends JFrame implements Cloneable
 		{
 			super.add(component);
 			component.repaint();
-			System.out.println(component.getLocation() + " " + component.getSize());
 		}
 
 		super.revalidate();
