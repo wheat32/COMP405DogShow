@@ -88,6 +88,16 @@ public class MainMenu extends Menu
 		reviewScoresBtn.setBounds(renderer.getWidth()/4-buttonWidth/2, renderer.getHeight()/8*6-buttonHeight/2, buttonWidth, buttonHeight);
 		reviewScoresBtn.setFont(new Font("Helvetica", Font.BOLD, 32));
 		reviewScoresBtn.setText("Review Scores");
+		reviewScoresBtn.addActionListener(new ActionListener()
+		{
+			
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				renderer.setMenu(new ReviewScorePage(renderer));
+				
+			}
+		});
 		components.add(reviewScoresBtn);
 		
 		JButton quitBtn = new JButton("QuitBtn");
