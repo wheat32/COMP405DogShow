@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -17,14 +18,16 @@ import graphics.Renderer;
 
 public class RegisterPage extends Menu
 {
-	private int panelWidth = 360;
-	private int panelHeight;//TODO
+	private int panelWidth = -1;
+	private int panelHeight = -1;
 	private int buttonWidth = 300;
 	private int buttonHeight = 80;
 
 	public RegisterPage(Renderer renderer) 
 	{
 		super(renderer);
+		panelWidth = renderer.getWidth()/12*3;
+		panelHeight = renderer.getHeight()/2;
 		renderer.setBackground("src/images/cutie.jpeg");
 		addComponents();
 	}
@@ -33,22 +36,15 @@ public class RegisterPage extends Menu
 	protected void addComponents() //TODO add a dog pictures upload method? 
 	{
 		JLabel registerPageLabel = new JLabel("RegisterPageLabel", SwingConstants.CENTER);
-		//registerPageLabel.setSize(400, 100);
-		registerPageLabel.setBounds((renderer.getWidth()/4), ((renderer.getHeight()/10)), ((renderer.getWidth()/2)), (renderer.getHeight()/8));
-		registerPageLabel.setFont(new Font("Helvetica", Font.BOLD, 32));
+		registerPageLabel.setBounds(0, renderer.getHeight()/8-buttonHeight/2, renderer.getWidth(), buttonHeight);
+		registerPageLabel.setFont(new Font("Helvetica", Font.BOLD, 64));
 		registerPageLabel.setText("Register Page");
-		registerPageLabel.setForeground(Color.BLUE);
-		registerPageLabel.setBackground(Color.YELLOW);
-		registerPageLabel.setOpaque(false);
+		registerPageLabel.setForeground(Color.BLACK);
 		components.add(registerPageLabel);
 		
-		//JDialog dname = new JDialog(renderer, "Dog Details", true);  //need a way to input fields, using jdialog?
 		JPanel fieldPanel = new JPanel(new GridBagLayout());
-		//fieldPanel.setLocation((renderer.getWidth()/3), (renderer.getHeight()/4));
-		//fieldPanel.setSize(300, 400);
-		fieldPanel.setBounds(((renderer.getWidth()/4)+50), ((renderer.getHeight()/10)), ((renderer.getWidth()/2)-100), (renderer.getHeight()-250));
-		GridBagConstraints cs  = new GridBagConstraints();
-		
+		fieldPanel.setBounds(renderer.getWidth()/10*6, renderer.getHeight()/10*2, panelWidth, panelHeight);
+		GridBagConstraints cs  = new GridBagConstraints();	
 		cs.fill = GridBagConstraints.HORIZONTAL;
 		
 		JLabel lbDogName = new JLabel("Dog Name: ");
@@ -99,13 +95,13 @@ public class RegisterPage extends Menu
 		cs.gridwidth = 2;
 		fieldPanel.add(tfDogCol, cs);
 		
-		JLabel lbDogMark= new JLabel("Dogs Markings: ");
+		JLabel lbDogMark = new JLabel("Dogs Markings: ");
 		cs.gridx = 0;
 		cs.gridy = 8;
 		cs.gridwidth = 1;
 		fieldPanel.add(lbDogMark, cs);
 
-		JTextField tfDogMark= new JTextField(32);
+		JTextField tfDogMark = new JTextField(32);
 		cs.gridx = 0;
 		cs.gridy = 9;
 		cs.gridwidth = 2;
@@ -122,6 +118,28 @@ public class RegisterPage extends Menu
 		cs.gridy = 11;
 		cs.gridwidth = 2;
 		fieldPanel.add(tfDogBreed, cs);
+		
+		JButton submitBtn = new JButton("SubmitButton");
+		cs.gridx = 0;
+		cs.gridy = 12;
+		cs.gridwidth = 1;
+		submitBtn.setText("Submit Button");
+		submitBtn.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				submitInformation();
+				tfDogName.setText("");
+				tfDogType.setText("");
+				tfRegiNum.setText("");
+				tfDogCol.setText("");
+				tfDogMark.setText("");
+				tfDogBreed.setText("");
+				JOptionPane.showMessageDialog(renderer, "Dog submitted.");
+			}
+		});
+		fieldPanel.add(submitBtn, cs);
 		
 		JButton quitBtn = new JButton("MainMenuBtn"); //TODO maybe set this to go back to main menu 
 		quitBtn.setBounds(renderer.getWidth()/2-buttonWidth/2, renderer.getHeight()/8*7-buttonHeight/2, buttonWidth, buttonHeight);
@@ -142,4 +160,8 @@ public class RegisterPage extends Menu
 		renderer.addComponents(components);
 	}
 
+	private void submitInformation()
+	{
+		//TODO add code to submit the information
+	}
 }
