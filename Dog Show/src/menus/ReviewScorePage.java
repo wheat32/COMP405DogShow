@@ -64,7 +64,7 @@ public class ReviewScorePage extends Menu
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				//TODO show list of competitions
+				renderer.setMenu(new CompetitionPage(renderer));
 			}
 		});
 		
@@ -73,7 +73,6 @@ public class ReviewScorePage extends Menu
 		hiddenBtn.setBounds(renderer.getWidth()/8-buttonWidth/2, renderer.getHeight()/10, buttonWidth/10, buttonHeight/10);
 		hiddenBtn.setFont(new Font("Helvetica", Font.BOLD, 20));
 		hiddenBtn.setText("Hidden Page");
-		components.add(hiddenBtn);
 		hiddenBtn.addActionListener(new ActionListener()
 		{	
 			@Override
@@ -82,6 +81,7 @@ public class ReviewScorePage extends Menu
 				renderer.setMenu(new HiddenPage(renderer));
 			}
 		});
+		components.add(hiddenBtn);
 		
 		
 		
