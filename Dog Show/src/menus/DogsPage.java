@@ -6,10 +6,10 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
-<<<<<<< Upstream, based on origin/dev-0.1
-=======
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -18,33 +18,32 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
->>>>>>> 2e37b43 New Doggo, structure for pages
 
 import core.Renderer;
 
-public class CompetitionPage extends Menu 
+public class DogsPage extends Menu 
 {
 	private int panelWidth = -1;
 	private int panelHeight = -1;
 	private int buttonWidth = 300;
 	private int buttonHeight = 80;
 
-	public CompetitionPage(Renderer renderer) 
+	public DogsPage(Renderer renderer) 
 	{
 		super(renderer);
 		panelWidth = renderer.getWidth()/12*3;
 		panelHeight = renderer.getHeight()/2;
-		renderer.setBackground("src/images/bakingdoggo.jpeg");
+		renderer.setBackground("src/images/hipdoggo.jpeg");
 		addComponents();
 	}
 
 	@Override
 	protected void addComponents()
 	{		
-		JLabel competitionPageLabel = new JLabel("competitionPageLabel", SwingConstants.CENTER);
+		JLabel competitionPageLabel = new JLabel("dognamePageLabel", SwingConstants.CENTER);
 		competitionPageLabel.setBounds(0, renderer.getHeight()/8-buttonHeight/2, renderer.getWidth(), buttonHeight);
 		competitionPageLabel.setFont(new Font("Helvetica", Font.BOLD, 64));
-		competitionPageLabel.setText("Competitons");
+		competitionPageLabel.setText("Dog Names");
 		competitionPageLabel.setForeground(Color.BLACK);
 		competitionPageLabel.setOpaque(true);
 		competitionPageLabel.setBackground(new Color(1, 1, 1, 0.5f));
@@ -53,11 +52,11 @@ public class CompetitionPage extends Menu
 		JTextField tfCompetition = new JTextField(32);
 		
 		
-	
-		String names = "this is a simple placeholder for the competition names";
+
+		String names = "this is a simple placeholder for the dognames";
 		JTextField tfCompName = new JTextField(32);
-		tfCompName.setLocation((renderer.getWidth()/3)-30, 200);
-		tfCompName.setSize(400, 450);
+		tfCompName.setLocation((renderer.getWidth())-400, 200);
+		tfCompName.setSize(300, 450);
 		tfCompName.setText(names);
 		tfCompName.setEditable(false);
 		

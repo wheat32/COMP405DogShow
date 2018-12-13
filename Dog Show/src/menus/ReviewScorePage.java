@@ -11,6 +11,8 @@ import javax.swing.SwingConstants;
 
 import core.Renderer;
 
+
+
 public class ReviewScorePage extends Menu 
 {
 	private int buttonWidth = 300;
@@ -45,7 +47,7 @@ public class ReviewScorePage extends Menu
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				//TODO show list of dogs 
+				renderer.setMenu(new DogsPage(renderer));
 			}
 		});
 		
