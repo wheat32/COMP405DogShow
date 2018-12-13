@@ -36,10 +36,9 @@ public class DogsPage extends Menu
 		competitionPageLabel.setBackground(new Color(1, 1, 1, 0.3f));
 		components.add(competitionPageLabel);
 
-		String names = "this is a simple placeholder for the dognames";
+		String names = "This is a simple placeholder for the dog names.";
 		JTextField tfCompName = new JTextField(32);
-		tfCompName.setLocation((renderer.getWidth())-400, 200);
-		tfCompName.setSize(300, 450);
+		tfCompName.setBounds((renderer.getWidth())-400, 200, 300, 450);
 		tfCompName.setText(names);
 		tfCompName.setEditable(false);
 		
