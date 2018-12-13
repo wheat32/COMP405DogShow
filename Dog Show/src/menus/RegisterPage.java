@@ -26,24 +26,27 @@ public class RegisterPage extends Menu
 	public RegisterPage(Renderer renderer) 
 	{
 		super(renderer);
-		panelWidth = renderer.getWidth()/12*3;
+		panelWidth = renderer.getWidth()/12*5;
 		panelHeight = renderer.getHeight()/2;
 		renderer.setBackground("src/images/cutie.jpeg");
 		addComponents();
 	}
 
 	@Override
-	protected void addComponents() //TODO add a dog pictures upload method? 
+	protected void addComponents()
 	{
 		JLabel registerPageLabel = new JLabel("RegisterPageLabel", SwingConstants.CENTER);
 		registerPageLabel.setBounds(0, renderer.getHeight()/8-buttonHeight/2, renderer.getWidth(), buttonHeight);
 		registerPageLabel.setFont(new Font("Helvetica", Font.BOLD, 64));
 		registerPageLabel.setText("Register Page");
 		registerPageLabel.setForeground(Color.BLACK);
+		registerPageLabel.setOpaque(true);
+		registerPageLabel.setBackground(new Color(1, 1, 1, 0.5f));
 		components.add(registerPageLabel);
 		
 		JPanel fieldPanel = new JPanel(new GridBagLayout());
 		fieldPanel.setBounds(renderer.getWidth()/10*6, renderer.getHeight()/10*2, panelWidth, panelHeight);
+		fieldPanel.setBackground(new Color(1, 1, 1, 0.8f));
 		GridBagConstraints cs  = new GridBagConstraints();	
 		cs.fill = GridBagConstraints.HORIZONTAL;
 		
@@ -141,7 +144,7 @@ public class RegisterPage extends Menu
 		});
 		fieldPanel.add(submitBtn, cs);
 		
-		JButton quitBtn = new JButton("MainMenuBtn"); //TODO maybe set this to go back to main menu 
+		JButton quitBtn = new JButton("MainMenuBtn");
 		quitBtn.setBounds(renderer.getWidth()/2-buttonWidth/2, renderer.getHeight()/8*7-buttonHeight/2, buttonWidth, buttonHeight);
 		quitBtn.setFont(new Font("Helvetica", Font.BOLD, 32));
 		quitBtn.setText("Main Menu");
@@ -162,6 +165,7 @@ public class RegisterPage extends Menu
 
 	private void submitInformation()
 	{
+		return;
 		//TODO add code to submit the information
 	}
 }

@@ -2,6 +2,9 @@ package menus;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,19 +12,26 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.event.PopupMenuEvent;
+import javax.swing.event.PopupMenuListener;
 
 import graphics.Renderer;
 
 public class ScoringPage extends Menu 
 {
+	private int panelWidth = -1;
+	private int panelHeight = -1;
 	private int buttonWidth = 300;
-	private int buttonHeight = 50;
+	private int buttonHeight = 80;
 	
 
 	public ScoringPage(Renderer renderer) 
 	{
 		super(renderer);
+		panelWidth = renderer.getWidth()/12*4;
+		panelHeight = renderer.getHeight()/3;
 		renderer.setBackground("src/images/shibeDoingARealCookWhileWearingAnApronOnTwoLegs.jpg");
 		addComponents();
 	}
@@ -29,20 +39,25 @@ public class ScoringPage extends Menu
 	@Override
 	protected void addComponents()
 	{
+		JLabel scoringPagePageLabel = new JLabel("ScoringPageLabel", SwingConstants.CENTER);
+		scoringPagePageLabel.setBounds(0, renderer.getHeight()/16-buttonHeight/2, renderer.getWidth(), buttonHeight);
+		scoringPagePageLabel.setFont(new Font("Helvetica", Font.BOLD, 64));
+		scoringPagePageLabel.setText("Scoring Page");
+		scoringPagePageLabel.setForeground(Color.BLACK);
+		scoringPagePageLabel.setOpaque(true);
+		scoringPagePageLabel.setBackground(new Color(1, 1, 1, 0.2f));
+		components.add(scoringPagePageLabel);
 		
-		JLabel ScoringPagePageLabel = new JLabel("ScoringPageLabel", SwingConstants.CENTER);
-		//registerPageLabel.setSize(400, 100);
-		ScoringPagePageLabel.setBounds((renderer.getWidth()/4), ((renderer.getHeight()/10)), ((renderer.getWidth()/2)), (renderer.getHeight()/8));
-		ScoringPagePageLabel.setFont(new Font("Helvetica", Font.BOLD, 32));
-		ScoringPagePageLabel.setText("Scoring Page");
-		ScoringPagePageLabel.setForeground(Color.BLUE);
-		ScoringPagePageLabel.setBackground(Color.YELLOW);
-		ScoringPagePageLabel.setOpaque(false);
-		components.add(ScoringPagePageLabel);
+		JPanel fieldPanel = new JPanel(new GridBagLayout());
+		fieldPanel.setBounds(renderer.getWidth()/10*6, renderer.getHeight()/10*2, panelWidth, panelHeight);
+		fieldPanel.setBackground(new Color(1, 1, 1, 0.7f));
+		GridBagConstraints cs  = new GridBagConstraints();	
+		cs.fill = GridBagConstraints.HORIZONTAL;
+		cs.insets = new Insets(16,3,16,3);
 		
-		String[] competitionNames = new String[]   //select competitoon, select dog, submit scores
+		String[] competitionNames = new String[]   //select competition, select dog, submit scores
 		{
-				"Select Competiton","Being Cute", "Being Small", "Attacking innocents"
+				"Select Competiton","Being Cute", "Being Small", "Attacking innocents", "Voting"
 		};
 		
 		String[] dogChoice = new String[]
@@ -59,22 +74,88 @@ public class ScoringPage extends Menu
 		competitionList.setLocation((renderer.getWidth()/3+75), ((renderer.getHeight()/4)));
 		competitionList.setSize(200, 30);
 		competitionList.setName("Competitions");
-		components.add(competitionList);
+		competitionList.addPopupMenuListener(new PopupMenuListener()
+		{
+			
+			@Override
+			public void popupMenuWillBecomeVisible(PopupMenuEvent e)
+			{
+				renderer.repaint();
+			}
+			
+			@Override
+			public void popupMenuWillBecomeInvisible(PopupMenuEvent e)
+			{
+				renderer.repaint();
+			}
+			
+			@Override
+			public void popupMenuCanceled(PopupMenuEvent e)
+			{
+				renderer.repaint();
+			}
+		});
+		cs.gridx = 0;
+		cs.gridy = 0;
+		fieldPanel.add(competitionList, cs);
 		
 		JComboBox<String> dogList = new JComboBox<>(dogChoice);
 		dogList.setLocation((renderer.getWidth()/3+75), ((renderer.getHeight()/4+50)));
 		dogList.setSize(200, 30);
-		
 		dogList.setName("Competitions");
-		components.add(dogList);
+		cs.gridx = 0;
+		cs.gridy = 1;
+		dogList.addPopupMenuListener(new PopupMenuListener()
+		{
+			
+			@Override
+			public void popupMenuWillBecomeVisible(PopupMenuEvent e)
+			{
+				renderer.repaint();
+			}
+			
+			@Override
+			public void popupMenuWillBecomeInvisible(PopupMenuEvent e)
+			{
+				renderer.repaint();
+			}
+			
+			@Override
+			public void popupMenuCanceled(PopupMenuEvent e)
+			{
+				renderer.repaint();
+			}
+		});
+		fieldPanel.add(dogList, cs);
 		
 		JComboBox<String> scoreList = new JComboBox<>(dogScore);
 		scoreList.setLocation((renderer.getWidth()/3+75), ((renderer.getHeight()/4+100)));
 		scoreList.setSize(200, 30);
 		scoreList.setName("Competitions");
-		components.add(scoreList);
-		
-		
+		scoreList.addPopupMenuListener(new PopupMenuListener()
+		{
+			
+			@Override
+			public void popupMenuWillBecomeVisible(PopupMenuEvent e)
+			{
+				renderer.repaint();
+			}
+			
+			@Override
+			public void popupMenuWillBecomeInvisible(PopupMenuEvent e)
+			{
+				renderer.repaint();
+			}
+			
+			@Override
+			public void popupMenuCanceled(PopupMenuEvent e)
+			{
+				renderer.repaint();
+			}
+		});
+		cs.gridx = 0;
+		cs.gridy = 2;
+		fieldPanel.add(scoreList, cs);
 		
 		JButton submitBtn = new JButton("submitbtn"); 
 		submitBtn.setBounds(renderer.getWidth()/2-buttonWidth/2, renderer.getHeight()/9*7-buttonHeight, buttonWidth, buttonHeight);
@@ -90,15 +171,12 @@ public class ScoringPage extends Menu
 				competitionList.setSelectedIndex(0);
 				dogList.setSelectedIndex(0);
 				JOptionPane.showMessageDialog(renderer, "Submitted Scores");
-				//TODO add functionality to sumbit scores into database
-				
+				submitScoresToDB();
 			}
 		});
-		
-	
-		components.add(submitBtn);
-		
-		
+		cs.gridx = 0;
+		cs.gridy = 3;
+		fieldPanel.add(submitBtn, cs);
 		
 		JButton quitBtn = new JButton("MainMenuBtn"); 
 		quitBtn.setBounds(renderer.getWidth()/2-buttonWidth/2, renderer.getHeight()/8*7-buttonHeight/2, buttonWidth, buttonHeight);
@@ -114,12 +192,15 @@ public class ScoringPage extends Menu
 			}
 		});
 		components.add(quitBtn);
-		//fieldPanel.setVisible(true);
-		//components.add(fieldPanel);
+		fieldPanel.setVisible(true);
+		components.add(fieldPanel);
 		
 		renderer.addComponents(components);
-		
-
 	}
-
+	
+	private void submitScoresToDB()
+	{
+		//TODO Add code to submit the scores to the DB
+		return;
+	}
 }

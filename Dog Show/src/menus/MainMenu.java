@@ -45,15 +45,18 @@ public class MainMenu extends Menu
 	@Override
 	protected void addComponents()
 	{
-		JLabel mainMenuLabel = new JLabel("MainMenuLabel", SwingConstants.CENTER);
-		mainMenuLabel.setBounds(0, renderer.getHeight()/8*2-buttonHeight/2, renderer.getWidth(), buttonHeight);
+		JLabel mainMenuLabel = new JLabel("MainMenuLabel", SwingConstants.CENTER);	
+		mainMenuLabel.setBounds(0, renderer.getHeight()/8-buttonHeight/2, renderer.getWidth(), buttonHeight);
 		mainMenuLabel.setFont(new Font("Helvetica", Font.BOLD, 64));
 		mainMenuLabel.setText("Main Menu");
-		mainMenuLabel.setForeground(Color.WHITE);
+		mainMenuLabel.setForeground(Color.BLACK);
+		mainMenuLabel.setOpaque(true);
+		mainMenuLabel.setBackground(new Color(1, 1, 1, 0.5f));
+		
 		components.add(mainMenuLabel);
 		
 		JButton registerBtn = new JButton("Register");
-		registerBtn.setBounds(renderer.getWidth()/2-buttonWidth/2, renderer.getHeight()/8*4-buttonHeight/2, buttonWidth, buttonHeight);
+		registerBtn.setBounds(renderer.getWidth()/4-buttonWidth/2, renderer.getHeight()/8*4-buttonHeight/2, buttonWidth, buttonHeight);
 		registerBtn.setFont(new Font("Helvetica", Font.BOLD, 32));
 		registerBtn.setText("Register");
 		registerBtn.addActionListener(new ActionListener()
@@ -67,7 +70,7 @@ public class MainMenu extends Menu
 		components.add(registerBtn);
 		
 		JButton scoringBtn = new JButton("Scoring");
-		scoringBtn.setBounds(renderer.getWidth()/2-buttonWidth/2, renderer.getHeight()/8*5-buttonHeight/2, buttonWidth, buttonHeight);
+		scoringBtn.setBounds(renderer.getWidth()/4-buttonWidth/2, renderer.getHeight()/8*5-buttonHeight/2, buttonWidth, buttonHeight);
 		scoringBtn.setFont(new Font("Helvetica", Font.BOLD, 32));
 		scoringBtn.setText("Scoring");
 		scoringBtn.addActionListener(new ActionListener()
@@ -82,13 +85,13 @@ public class MainMenu extends Menu
 		components.add(scoringBtn);
 		
 		JButton reviewScoresBtn = new JButton("ReviewScores");
-		reviewScoresBtn.setBounds(renderer.getWidth()/2-buttonWidth/2, renderer.getHeight()/8*6-buttonHeight/2, buttonWidth, buttonHeight);
+		reviewScoresBtn.setBounds(renderer.getWidth()/4-buttonWidth/2, renderer.getHeight()/8*6-buttonHeight/2, buttonWidth, buttonHeight);
 		reviewScoresBtn.setFont(new Font("Helvetica", Font.BOLD, 32));
 		reviewScoresBtn.setText("Review Scores");
 		components.add(reviewScoresBtn);
 		
 		JButton quitBtn = new JButton("QuitBtn");
-		quitBtn.setBounds(renderer.getWidth()/2-buttonWidth/2, renderer.getHeight()/8*7-buttonHeight/2, buttonWidth, buttonHeight);
+		quitBtn.setBounds(renderer.getWidth()/4-buttonWidth/2, renderer.getHeight()/8*7-buttonHeight/2, buttonWidth, buttonHeight);
 		quitBtn.setFont(new Font("Helvetica", Font.BOLD, 32));
 		quitBtn.setText("Quit");
 		quitBtn.addActionListener(new ActionListener()
