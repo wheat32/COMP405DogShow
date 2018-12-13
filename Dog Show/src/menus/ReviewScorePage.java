@@ -13,16 +13,12 @@ import core.Renderer;
 
 public class ReviewScorePage extends Menu 
 {
-	private int panelWidth = -1;
-	private int panelHeight = -1;
 	private int buttonWidth = 300;
 	private int buttonHeight = 80;
 
 	public ReviewScorePage(Renderer renderer) 
 	{
 		super(renderer);
-		panelWidth = renderer.getWidth()/12*3;
-		panelHeight = renderer.getHeight()/2;
 		renderer.setBackground("src/images/simplename.jpg");
 		addComponents();
 	}
@@ -30,17 +26,17 @@ public class ReviewScorePage extends Menu
 	@Override
 	protected void addComponents()
 	{
-		
 		JLabel reviewPageLabel = new JLabel("ReviewPageLabel", SwingConstants.CENTER);
-		reviewPageLabel.setBounds(0, renderer.getHeight()/8, renderer.getWidth(), buttonHeight);
+		reviewPageLabel.setBounds(0, renderer.getHeight()/16-buttonHeight/2, renderer.getWidth(), buttonHeight);
 		reviewPageLabel.setFont(new Font("Helvetica", Font.BOLD, 64));
 		reviewPageLabel.setText("Review Page");
 		reviewPageLabel.setForeground(Color.BLACK);
+		reviewPageLabel.setOpaque(true);
+		reviewPageLabel.setBackground(new Color(1, 1, 1, 0.5f));
 		components.add(reviewPageLabel);
 		
-		
 		JButton showDogBtn = new JButton("Show List of Dogs");
-		showDogBtn.setBounds(renderer.getWidth()/2-buttonWidth/2, renderer.getHeight()/4, buttonWidth, buttonHeight);
+		showDogBtn.setBounds(renderer.getWidth()/8*6-buttonWidth/2, renderer.getHeight()/8*4, buttonWidth, buttonHeight);
 		showDogBtn.setFont(new Font("Helvetica", Font.BOLD, 20));
 		showDogBtn.setText("Show Dogs");
 		components.add(showDogBtn);
@@ -53,9 +49,8 @@ public class ReviewScorePage extends Menu
 			}
 		});
 		
-		
 		JButton showCompBtn = new JButton("Show List of Comp.");
-		showCompBtn.setBounds(renderer.getWidth()/2-buttonWidth/2, renderer.getHeight()/4+ buttonHeight, buttonWidth, buttonHeight);
+		showCompBtn.setBounds(renderer.getWidth()/8*6-buttonWidth/2, renderer.getHeight()/8*5, buttonWidth, buttonHeight);
 		showCompBtn.setFont(new Font("Helvetica", Font.BOLD, 20));
 		showCompBtn.setText("Show Competitions");
 		components.add(showCompBtn);
@@ -68,9 +63,8 @@ public class ReviewScorePage extends Menu
 			}
 		});
 		
-		
 		JButton hiddenBtn = new JButton("Hidden Page");
-		hiddenBtn.setBounds(renderer.getWidth()/8-buttonWidth/2, renderer.getHeight()/10, buttonWidth/10, buttonHeight/10);
+		hiddenBtn.setBounds(0, 20, buttonHeight/14, buttonHeight/14);
 		hiddenBtn.setFont(new Font("Helvetica", Font.BOLD, 20));
 		hiddenBtn.setText("Hidden Page");
 		hiddenBtn.addActionListener(new ActionListener()
@@ -82,8 +76,6 @@ public class ReviewScorePage extends Menu
 			}
 		});
 		components.add(hiddenBtn);
-		
-		
 		
 		JButton quitBtn = new JButton("MainMenuBtn"); //TODO maybe set this to go back to main menu 
 		quitBtn.setBounds(renderer.getWidth()/2-buttonWidth/2, renderer.getHeight()/8*7-buttonHeight/2, buttonWidth, buttonHeight);
@@ -99,10 +91,7 @@ public class ReviewScorePage extends Menu
 		});
 		components.add(quitBtn);
 		
-		
 		renderer.addComponents(components);
-		
-
 	}
 
 }

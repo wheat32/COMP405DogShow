@@ -3,16 +3,10 @@ package menus;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JList;
 
-import graphics.Renderer;
+import core.Renderer;
 
 public class CompetitionPage extends Menu 
 {
