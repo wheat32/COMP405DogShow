@@ -19,7 +19,7 @@ public class ReviewScorePage extends Menu
 	public ReviewScorePage(Renderer renderer) 
 	{
 		super(renderer);
-		renderer.setBackground("src/images/simplename.jpg");
+		renderer.setBackground("src/images/shibeLookingDownOnHisSubjects.jpeg");
 		addComponents();
 	}
 
