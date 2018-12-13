@@ -8,17 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-<<<<<<< Upstream, based on origin/dev-0.1
-=======
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
->>>>>>> 2e37b43 New Doggo, structure for pages
 
 import core.Renderer;
 
