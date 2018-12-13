@@ -39,14 +39,14 @@ public class ScoringPage extends Menu
 	@Override
 	protected void addComponents()
 	{
-		JLabel scoringPagePageLabel = new JLabel("ScoringPageLabel", SwingConstants.CENTER);
-		scoringPagePageLabel.setBounds(0, renderer.getHeight()/16-buttonHeight/2, renderer.getWidth(), buttonHeight);
-		scoringPagePageLabel.setFont(new Font("Helvetica", Font.BOLD, 64));
-		scoringPagePageLabel.setText("Scoring Page");
-		scoringPagePageLabel.setForeground(Color.BLACK);
-		scoringPagePageLabel.setOpaque(true);
-		scoringPagePageLabel.setBackground(new Color(1, 1, 1, 0.25f));
-		components.add(scoringPagePageLabel);
+		JLabel scoringPageLabel = new JLabel("ScoringPageLabel", SwingConstants.CENTER);
+		scoringPageLabel.setBounds(0, renderer.getHeight()/16-buttonHeight/2, renderer.getWidth(), buttonHeight);
+		scoringPageLabel.setFont(new Font("Helvetica", Font.BOLD, 64));
+		scoringPageLabel.setText("Scoring Page");
+		scoringPageLabel.setForeground(Color.BLACK);
+		scoringPageLabel.setOpaque(true);
+		scoringPageLabel.setBackground(new Color(1, 1, 1, 0.25f));
+		components.add(scoringPageLabel);
 		
 		JPanel fieldPanel = new JPanel(new GridBagLayout());
 		fieldPanel.setBounds(renderer.getWidth()/10*6, renderer.getHeight()/10*2, panelWidth, panelHeight);

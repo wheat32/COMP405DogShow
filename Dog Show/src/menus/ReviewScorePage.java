@@ -26,10 +26,6 @@ public class ReviewScorePage extends Menu
 		renderer.setBackground("src/images/simplename.jpg");
 		addComponents();
 	}
-	//show list of dogs
-	//show list of competitions
-	//show selected item (dog or comp.) 
-
 
 	@Override
 	protected void addComponents()
