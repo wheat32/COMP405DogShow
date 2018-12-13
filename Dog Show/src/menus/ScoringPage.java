@@ -45,7 +45,7 @@ public class ScoringPage extends Menu
 		scoringPagePageLabel.setText("Scoring Page");
 		scoringPagePageLabel.setForeground(Color.BLACK);
 		scoringPagePageLabel.setOpaque(true);
-		scoringPagePageLabel.setBackground(new Color(1, 1, 1, 0.2f));
+		scoringPagePageLabel.setBackground(new Color(1, 1, 1, 0.25f));
 		components.add(scoringPagePageLabel);
 		
 		JPanel fieldPanel = new JPanel(new GridBagLayout());
