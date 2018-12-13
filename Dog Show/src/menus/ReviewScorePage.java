@@ -11,8 +11,6 @@ import javax.swing.SwingConstants;
 
 import core.Renderer;
 
-
-
 public class ReviewScorePage extends Menu 
 {
 	private int buttonWidth = 300;
