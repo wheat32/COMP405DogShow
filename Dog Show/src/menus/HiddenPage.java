@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
-import graphics.Renderer;
+import core.Renderer;
 
 public class HiddenPage extends Menu 
 {

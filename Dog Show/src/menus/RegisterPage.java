@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import graphics.Renderer;
+import core.Renderer;
 
 public class RegisterPage extends Menu
 {

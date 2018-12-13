@@ -17,7 +17,7 @@ import javax.swing.SwingConstants;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 
-import graphics.Renderer;
+import core.Renderer;
 
 public class ScoringPage extends Menu 
 {

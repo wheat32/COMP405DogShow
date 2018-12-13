@@ -17,8 +17,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
+import core.Renderer;
 import core.Status;
-import graphics.Renderer;
 
 public class Login
 {

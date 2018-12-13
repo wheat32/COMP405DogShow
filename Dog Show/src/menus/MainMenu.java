@@ -9,8 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import core.Renderer;
 import core.Status;
-import graphics.Renderer;
 import popups.Login;
 
 public class MainMenu extends Menu

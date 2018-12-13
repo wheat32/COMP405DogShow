@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-import graphics.Renderer;
+import core.Renderer;
 
 public class ReviewScorePage extends Menu 
 {

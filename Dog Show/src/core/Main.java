@@ -1,6 +1,5 @@
 package core;
 
-import graphics.Renderer;
 import menus.MainMenu;
 
 public class Main

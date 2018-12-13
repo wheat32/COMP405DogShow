@@ -3,7 +3,7 @@ package menus;
 import java.awt.Component;
 import java.util.ArrayList;
 
-import graphics.Renderer;
+import core.Renderer;
 
 public abstract class Menu
 {
