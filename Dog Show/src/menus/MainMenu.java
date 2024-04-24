@@ -1,17 +1,119 @@
 package menus;
 
-import java.awt.Graphics2D;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import listeners.GraphicsListener;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
-public class MainMenu implements GraphicsListener
-{
+import core.Renderer;
+import core.Status;
+import popups.Login;
+
+public class MainMenu extends Menu
+{	
+	private int buttonWidth = 300;
+	private int buttonHeight = 80;
 	
-
-	@Override
-	public void graphicsCall(Graphics2D gfx)
+	public MainMenu(Renderer renderer)
 	{
-		// TODO Auto-generated method stub
+		super(renderer);
+		renderer.setBackground("src/images/dogDoingWorkOnControlSticksWhichAreRedAndRound.jpg");
+		checkStatus();
+		addComponents();
+	}
+	
+	private void checkStatus()
+	{
+		if(Status.loggedIn == false)
+		{	
+			Thread thread = new Thread(new Runnable()
+			{
+				@Override
+				public void run()
+				{
+					new Login(renderer);
+				}
+			});
+			thread.start();
+		}
+	}
+	
+	@Override
+	protected void addComponents()
+	{
+		JLabel mainMenuLabel = new JLabel("MainMenuLabel", SwingConstants.CENTER);	
+		mainMenuLabel.setBounds(0, renderer.getHeight()/8-buttonHeight/2, renderer.getWidth(), buttonHeight);
+		mainMenuLabel.setFont(new Font("Helvetica", Font.BOLD, 64));
+		mainMenuLabel.setText("Main Menu");
+		mainMenuLabel.setForeground(Color.BLACK);
+		mainMenuLabel.setOpaque(true);
+		mainMenuLabel.setBackground(new Color(1, 1, 1, 0.5f));
 		
+		components.add(mainMenuLabel);
+		
+		JButton registerBtn = new JButton("Register");
+		registerBtn.setBounds(renderer.getWidth()/4-buttonWidth/2, renderer.getHeight()/8*4-buttonHeight/2, buttonWidth, buttonHeight);
+		registerBtn.setFont(new Font("Helvetica", Font.BOLD, 32));
+		registerBtn.setText("Register");
+		registerBtn.addActionListener(new ActionListener()
+		{	
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				renderer.setMenu(new RegisterPage(renderer));
+			}
+		});
+		components.add(registerBtn);
+		
+		JButton scoringBtn = new JButton("Scoring");
+		scoringBtn.setBounds(renderer.getWidth()/4-buttonWidth/2, renderer.getHeight()/8*5-buttonHeight/2, buttonWidth, buttonHeight);
+		scoringBtn.setFont(new Font("Helvetica", Font.BOLD, 32));
+		scoringBtn.setText("Scoring");
+		scoringBtn.addActionListener(new ActionListener()
+		{	
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				renderer.setMenu(new ScoringPage(renderer));
+				
+			}
+		});
+		components.add(scoringBtn);
+		
+		JButton reviewScoresBtn = new JButton("ReviewScores");
+		reviewScoresBtn.setBounds(renderer.getWidth()/4-buttonWidth/2, renderer.getHeight()/8*6-buttonHeight/2, buttonWidth, buttonHeight);
+		reviewScoresBtn.setFont(new Font("Helvetica", Font.BOLD, 32));
+		reviewScoresBtn.setText("Review Scores");
+		reviewScoresBtn.addActionListener(new ActionListener()
+		{
+			
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				renderer.setMenu(new ReviewScorePage(renderer));
+				
+			}
+		});
+		components.add(reviewScoresBtn);
+		
+		JButton quitBtn = new JButton("QuitBtn");
+		quitBtn.setBounds(renderer.getWidth()/4-buttonWidth/2, renderer.getHeight()/8*7-buttonHeight/2, buttonWidth, buttonHeight);
+		quitBtn.setFont(new Font("Helvetica", Font.BOLD, 32));
+		quitBtn.setText("Quit");
+		quitBtn.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				renderer.dispose();
+			}
+		});
+		components.add(quitBtn);
+		
+		renderer.addComponents(components);
 	}
 }
